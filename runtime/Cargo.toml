@@ -4,7 +4,7 @@ edition = '2018'
 homepage = 'https://substrate.dev'
 license = 'GPL-3.0-or-later'
 name = 'node-polkaexchange-runtime'
-repository = ''
+repository = 'https://github.com/gifitsp/PolkaExchange'
 version = '3.0.0'
 
 [package.metadata.docs.rs]
