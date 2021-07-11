@@ -32,7 +32,7 @@ cargo clean -p node-polkaexchange
 cargo test
 
 ## Run
-**single node**
+*single node*
 
 cargo run --release -- --dev
 
