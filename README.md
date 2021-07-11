@@ -14,9 +14,8 @@ A decentralized exchange application based on Polka/Substrate blockchain framewo
 * other dependencies explained by substrate: https://substrate.dev/docs/en/
 
 ## Build
-git clone https://github.com/gifitsp/PolkaExchange.git
-
-cd PolkaExchange
+    git clone https://github.com/gifitsp/PolkaExchange.git
+    cd PolkaExchange
 
 cargo build --release
 
