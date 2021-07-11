@@ -15,10 +15,14 @@ A decentralized exchange application based on Polka/Substrate blockchain framewo
 
 ## Build
 git clone https://github.com/gifitsp/PolkaExchange.git
+
 cd PolkaExchange
+
 cargo build --release
 
+
 To rebuild you may run this first:
+
 cargo clean -p node-polkaexchange
 
 ## Parameters and Subcommands Helps
@@ -30,17 +34,27 @@ cargo test
 ## Run
 **single node**
 cargo run --release -- --dev
+
 or
+
 ./target/release/node-polkaexchange --dev
+
 **multi-node**
 cargo run --release -- --chain local
+
 or
+
 ./target/release/node-polkaexchange --chain local
 
+
 To run a fresh instance, you can run this to clean local db:
+
 cargo run --release -- purge-chain --dev
+
 or
+
 ./target/release/node-polkaexchange purge-chain --dev
+
 
 ## More Running Configs and Debugging Info
 Please refer https://substrate.dev/docs/en/tutorials/start-a-private-network/customchain
