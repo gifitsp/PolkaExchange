@@ -49,8 +49,6 @@ or
 ./target/release/node-polkaexchange --chain local
 
 
-
-
 To run a fresh instance, you can run the following to clean local db:
 
 cargo run --release -- purge-chain --dev
