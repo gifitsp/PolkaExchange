@@ -1,7 +1,7 @@
 ## Introduction
 A decentralized exchange application based on Polka/Substrate blockchain framework. The goal of it is to exchange as many tokens as possible on a very simple DeFi platform. So far it is a beta version without any UI and more features are possibly in development.
 
-## What it provides by now
+## Features
 * Low exchange fees
 * AMM exchange mode like Uniswap
 * Exchange can be crossing multiple pools so that liquidity can be aggregated very easily
