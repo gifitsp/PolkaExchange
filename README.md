@@ -11,7 +11,7 @@ A simple decentralized exchange application based on Polka/Substrate blockchain 
 * gcc 5.1 or above
 * CMake3 or above
 * Clang9 or above and llvm
-* other dependencies explained by substrate: https://substrate.dev/docs/en/
+* other dependencies explained by substrate: https://substrate.dev/docs/en/knowledgebase/getting-started/
 
 ## Build
     git clone https://github.com/gifitsp/PolkaExchange.git
