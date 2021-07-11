@@ -21,7 +21,7 @@ cd PolkaExchange
 cargo build --release
 
 
-To rebuild you may run this first:
+To rebuild you may run this command first:
 
 cargo clean -p node-polkaexchange
 
@@ -47,7 +47,7 @@ or
 ./target/release/node-polkaexchange --chain local
 
 
-To run a fresh instance, you can run this to clean local db:
+To run a fresh instance, you can run the following to clean local db:
 
 cargo run --release -- purge-chain --dev
 
