@@ -15,10 +15,13 @@ A decentralized exchange application based on Polka/Substrate blockchain framewo
 
 ## Build
 git clone https://github.com/gifitsp/PolkaExchange.git
+
 cd PolkaExchange
+
 cargo build --release
 
 To rebuild you may run this first:
+
 cargo clean -p node-polkaexchange
 
 ## Parameters and Subcommands Helps
