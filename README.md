@@ -33,6 +33,7 @@ cargo test
 
 ## Run
 **single node**
+
 cargo run --release -- --dev
 
 or
@@ -40,6 +41,7 @@ or
 ./target/release/node-polkaexchange --dev
 
 **multi-node**
+
 cargo run --release -- --chain local
 
 or
