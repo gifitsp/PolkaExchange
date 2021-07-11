@@ -30,16 +30,26 @@ To rebuild you may run this command first:
 
 ## Run
 **single node**
+
     cargo run --release -- --dev
-    or
+    
+or
+
     ./target/release/node-polkaexchange --dev
+    
 **multi-node**
+
     cargo run --release -- --chain local
-    or
+    
+or
     ./target/release/node-polkaexchange --chain local
-    To run a fresh instance, you can run the following to clean local db:
+    
+To run a fresh instance, you can run the following to clean local db:
+    
     cargo run --release -- purge-chain --dev
-    or
+    
+or
+
     ./target/release/node-polkaexchange purge-chain --dev
 
 ## More Running Configs and Debugging Info
