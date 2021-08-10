@@ -7,13 +7,14 @@ use sp_core::{Pair, Public, sr25519};
 use node_polkaexchange_runtime::{
 	AccountId, AuraConfig, BalancesConfig, GenesisConfig, GrandpaConfig,
 	SudoConfig, SystemConfig, WASM_BINARY, Signature, TokensConfig,
-	FungibleAssetConfig, PoolAmmConfig, PoolManagerConfig,
+	FungibleAssetConfig, PoolAmmConfig, PoolManagerConfig, NFTConfig, FarmingConfig,
 };
 use sp_consensus_aura::sr25519::AuthorityId as AuraId;
 use sp_finality_grandpa::AuthorityId as GrandpaId;
 use sp_runtime::traits::{Verify, IdentifyAccount};
 use sc_service::ChainType;
 use sp_std::collections::btree_map::BTreeMap;
+use sp_std::collections::btree_set::BTreeSet;
 
 use base::*;
 
@@ -142,6 +143,11 @@ fn testnet_genesis(
 	endowed_accounts: Vec<AccountId>,
 	_enable_println: bool,
 ) -> GenesisConfig {
+
+	let mut nft_tokens = BTreeSet::new();
+	nft_tokens.insert(NftTokenId::from_string("endowed_token1"));
+	nft_tokens.insert(NftTokenId::from_string("endowed_token2"));
+
 	GenesisConfig {
 		frame_system: Some(SystemConfig {
 			// Add Wasm runtime to storage.
@@ -199,6 +205,30 @@ fn testnet_genesis(
         }),
 		pallet_pool_manager: Some(PoolManagerConfig {
 			endowed_pool: vec![
+			],
+        }),
+		pallet_nft: Some(NFTConfig {
+            endowed_nfts: vec![
+                (
+                    endowed_accounts[0].to_owned(),
+					FarmId::from_string("endowed_class1"),
+					Default::default(),
+					StdString::from_string(""),
+					nft_tokens.clone(),
+				),
+			],
+        }),
+		pallet_farming: Some(FarmingConfig {
+            endowed_farms: vec![
+                (
+                    endowed_accounts[0].to_owned(),
+					FarmId::from_string("endowed_farm1"),
+					FixedString::from_string("DOT"),
+					None,
+					Some((NftClassId::from_string("Class1"), NftClassId::from_string("NFT1"))),
+					10,
+					2,
+                ),
 			],
         }),
 	}
