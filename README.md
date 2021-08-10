@@ -1,9 +1,11 @@
 ## Introduction
-A simplified decentralized exchange application based on Polka/Substrate blockchain framework. The goal of it is to exchange as many tokens as possible on a very simple DeFi platform. So far it is a beta version without any UI and more features are possibly in development.
+A simplified decentralized exchange application based on Polka/Substrate blockchain framework. The goal of it is to exchange as many tokens as possible on a very simple DeFi platform. So far it is a beta version including NFT and FT exchange and farming without any UI and more features are possibly in development.
 
 ## Features
 * Low exchange fees
 * AMM exchange mode like Uniswap
+* NFT exchange
+* Yield farming both on NFT and FT
 * Exchange can be crossing multiple pools so that liquidity can be aggregated very easily
 
 ## Build Dependencies
