@@ -61,6 +61,8 @@ base = { path = "../base", default-features = false }
 pallet-fungible-asset = { path = '../pallets/fungible-asset', default-features = false }
 pallet-pool-amm = { path = '../pallets/pool-amm', default-features = false }
 pallet-pool-manager = { path = '../pallets/pool-manager', default-features = false }
+pallet-nft = { path = '../pallets/nft', default-features = false }
+pallet-farming = { path = '../pallets/farming', default-features = false }
 
 [features]
 default = ['std']
@@ -90,6 +92,8 @@ std = [
 	'pallet-fungible-asset/std',
 	'pallet-pool-amm/std',
 	'pallet-pool-manager/std',
+    'pallet-nft/std',
+    'pallet-farming/std',
     'pallet-timestamp/std',
     'pallet-transaction-payment/std',
     'pallet-transaction-payment-rpc-runtime-api/std',

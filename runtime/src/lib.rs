@@ -54,6 +54,9 @@ pub use pallet_fungible_asset;
 pub use pallet_pool_amm;
 pub use pallet_pool_manager;
 
+pub use pallet_nft;
+pub use pallet_farming;
+
 /// An index to a block.
 pub type BlockNumber = u32;
 
@@ -316,6 +319,15 @@ impl pallet_pool_manager::Config for Runtime {
 	type Event = Event;
 }
 
+impl pallet_nft::Config for Runtime {
+	type Event = Event;
+	type Data = StdString;
+}
+
+impl pallet_farming::Config for Runtime {
+	type Event = Event;
+}
+
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
 	pub enum Runtime where
@@ -337,6 +349,8 @@ construct_runtime!(
 		FungibleAsset: pallet_fungible_asset::{Module, Call, Storage, Config<T>, Event<T>},
 		PoolAmm: pallet_pool_amm::{Module, Call, Storage, Config<T>, Event<T>},
 		PoolManager: pallet_pool_manager::{Module, Call, Storage, Config<T>, Event<T>},
+		NFT: pallet_nft::{Module, Call, Storage, Config<T>, Event<T>},
+		Farming: pallet_farming::{Module, Call, Storage, Config<T>, Event<T>},
 	}
 );
 
