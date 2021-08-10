@@ -3,6 +3,8 @@
 // Copyright (C) 2020-2021 John.
 // SPDX-License-Identifier: GPL-3.0-or-later WITH Classpath-exception-2.0
 
+#![allow(dead_code)]
+
 use crate::{self as pallet_fungible_asset};
 use currencies::BasicCurrencyAdapter;
 use frame_support::traits::GenesisBuild;

@@ -15,8 +15,8 @@ use std::fmt;
 #[cfg(test)]
 mod mock;
 
-#[cfg(test)]
-mod tests;
+//#[cfg(test)]
+//mod tests;
 
 use frame_support::sp_runtime::traits::{MaybeSerializeDeserialize, Member};
 use frame_support::{ensure, Parameter};
@@ -32,7 +32,7 @@ pub use base::*;
 pub const MAX_PRECISION: u8 = 18;
 
 pub type AssetIdOf<T> = <T as Config>::AssetId;
-type AccountIdOf<T> = <T as frame_system::Config>::AccountId;
+pub type AccountIdOf<T> = <T as frame_system::Config>::AccountId;
 type CurrencyIdOf<T> = <<T as Config>::Currency as MultiCurrency<<T as frame_system::Config>::AccountId>>::CurrencyId;
 
 pub use pallet::*;
@@ -332,8 +332,7 @@ impl<T: Config> Pallet<T> {
 			);
 		}
 
-		frame_system::Pallet::<T>::inc_consumers(&issuer)
-			.map_err(|_| Error::<T>::IncRefError)?;
+		frame_system::Pallet::<T>::inc_providers(&issuer);
 		AssetOwnerList::<T>::insert(asset_id.clone(), issuer.clone());
 
 		if initial_supply > 0 {
@@ -406,9 +405,28 @@ impl<T: Config> Pallet<T> {
 		Ok(())
 	}
 
+	pub fn is_asset_mintable(symbol: &AssetSymbol) -> bool {
+		let asset_id = Self::get_asset_id(&symbol);
+		if Self::get_asset_owner(&asset_id).is_none() {
+			return false;
+		}
+		let assetinfo = AssetInfoData::<T>::get(asset_id);
+		assetinfo.is_mintable
+	}
+
+	pub fn is_asset_id_mintable(asset_id: &T::AssetId) -> bool {
+		let symbol = Self::get_asset_symbol(asset_id);
+		Self::is_asset_mintable(&symbol)
+    }
+
 	pub fn is_asset_existed(symbol: &AssetSymbol) -> bool {
 		let asset_id = Self::get_asset_id(&symbol);
         Self::get_asset_owner(&asset_id).is_some()
+    }
+
+	pub fn is_asset_id_existed(asset_id: &T::AssetId) -> bool {
+		let symbol = Self::get_asset_symbol(asset_id);
+		Self::is_asset_existed(&symbol)
     }
 
 	pub fn is_asset_owner(symbol: &AssetSymbol, account_id: &T::AccountId) -> bool {
@@ -416,6 +434,11 @@ impl<T: Config> Pallet<T> {
         Self::get_asset_owner(&asset_id)
             .map(|x| &x == account_id)
             .unwrap_or(false)
+    }
+
+	pub fn is_asset_id_owner(asset_id: &T::AssetId, account_id: &T::AccountId) -> bool {
+		let symbol = Self::get_asset_symbol(asset_id);
+		Self::is_asset_owner(&symbol, account_id)
     }
 
 	pub fn total_issuance(symbol: &AssetSymbol) -> Result<Balance, DispatchError> {
