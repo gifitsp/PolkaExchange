@@ -80,3 +80,39 @@ impl<AccountId: Ord> Default for PoolInfo<AccountId> {
         }
     }
 }
+
+#[derive(Encode, Decode, Clone, Eq, PartialEq, RuntimeDebug)]
+#[cfg_attr(feature = "std", derive(Serialize, Deserialize))]
+pub struct TokenMetadata {
+    pub title: Option<StdString>,
+    pub description: Option<StdString>,
+    pub media: Option<StdString>,
+	pub media_hash: Option<StdString>,
+	pub copies: Option<u64>,
+	pub issued_at: Option<StdString>,
+	pub expires_at: Option<StdString>,
+	pub starts_at: Option<StdString>,
+	pub updated_at: Option<StdString>,
+	pub extra: Option<StdString>,
+	pub reference: Option<StdString>,
+	pub reference_hash: Option<StdString>,
+}
+
+impl Default for TokenMetadata {
+    fn default() -> Self {
+        Self{
+			title: Some(StdString::from_string("not set")),
+			description: None,
+			media: None,
+			media_hash: None,
+			copies: Some(1),
+			issued_at: None,
+			expires_at: None,
+			starts_at: None,
+			updated_at: None,
+			extra: None,
+			reference: None,
+			reference_hash: None,
+		}
+    }
+}

@@ -59,7 +59,7 @@ impl FromStr for StdString {
 }
 
 impl StdString {
-    pub fn from_string(s: &String) -> Self {
+    pub fn from_string(s: &str) -> Self {
         StdString(s.as_bytes().to_vec())
     }
 }
@@ -214,6 +214,9 @@ pub type Amount = i128;
 pub type BalancePrecision = u8;
 pub type PoolId = FixedString;
 
+pub type NftClassId = FixedString;
+pub type NftTokenId = FixedString;
+pub type FarmId = FixedString;
 
 pub const DEFAULT_ID: FixedString = FixedString::from_const_string("DEFAULT");
 
