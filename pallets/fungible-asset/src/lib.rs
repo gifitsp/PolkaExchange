@@ -15,8 +15,8 @@ use std::fmt;
 #[cfg(test)]
 mod mock;
 
-//#[cfg(test)]
-//mod tests;
+#[cfg(test)]
+mod tests;
 
 use frame_support::sp_runtime::traits::{MaybeSerializeDeserialize, Member};
 use frame_support::{ensure, Parameter};
