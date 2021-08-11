@@ -371,7 +371,7 @@ impl<T: Config> Pallet<T> {
                     farm.total_stake_amount = farm.total_stake_amount.checked_add(stake_amount_value).ok_or(Error::<T>::AmountOverflow)?;
                 },
                 _ => {
-                    return Err(DispatchError::from(Error::<T>::WrongStakeType));
+                    ensure!(false, Error::<T>::WrongStakeType);
                 }
             }
 
@@ -406,7 +406,7 @@ impl<T: Config> Pallet<T> {
                         FungibleAsset::<T>::transfer_asset(&farm.owner, &FungibleAsset::<T>::get_asset_symbol(&asset_id), who, stake_amount_value)?;
                     },
                     _ => {
-                        return Err(DispatchError::from(Error::<T>::WrongStakeType));
+                        ensure!(false, Error::<T>::WrongStakeType);
                     }
                 }
                 
